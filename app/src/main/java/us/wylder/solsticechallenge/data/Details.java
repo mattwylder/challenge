@@ -6,6 +6,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
+ * Java Object that defines the extra details privided by a {@link Contact}'s detailsURL
+ *
  * Created by Matt on 8/17/2015.
  */
 public class Details {
@@ -17,10 +19,16 @@ public class Details {
     private String website;
     private Address address;
 
+    /**
+     * Default constructor required for Jackson
+     */
     public Details(){
 
     }
 
+    /*
+     * Constructor used for debugging
+     */
     public Details(int employeeId, boolean favorite, String largeImageURL, String email,
                    String website, Address address) {
 
@@ -32,8 +40,13 @@ public class Details {
         setAddress(address);
     }
 
+    /*
+     * FIXME: The nested try/catch block in this block feels dirty try moving those checks into setters
+     */
     public Details(JSONObject j) throws JSONException{
         setEmployeeId(j.getInt("employeeId"));
+
+       //Some users have their "favorite" value set as 1 or 0 instead of true or false.
         try{
             setFavorite(j.getBoolean("favorite"));
         } catch (JSONException e){
@@ -101,6 +114,75 @@ public class Details {
 
     private void setAddress(JSONObject jsonObject) throws JSONException{
         this.address = new Address(jsonObject);
+    }
+
+    public class Address {
+        private String street;
+        private String city;
+        private String state;
+        private String country;
+        private String zip;
+        private double latitude;
+        private double longitude;
+
+        /**
+         * Default constructor needed for Jackson
+         */
+        public Address() {
+        }
+
+        public Address(String street, String city, String state, String country, String zip,
+                       double latitude, double longitude) {
+            setStreet(street);
+            setCity(city);
+            setState(state);
+            setCountry(country);
+            setZip(zip);
+            setLatitude(latitude);
+            setLongitude(longitude);
+        }
+
+        public Address(JSONObject j) throws JSONException {
+            setStreet(j.getString("street"));
+            setCity(j.getString("city"));
+            setState(j.getString("state"));
+            setCountry(j.getString("country"));
+            setZip(j.getString("zip"));
+            setLatitude(j.getDouble("latitude"));
+            setLongitude(j.getDouble("longitude"));
+        }
+
+        public String toString() {
+            return street + '\n' + city + ", " + state + " " + zip + '\n' + country;
+        }
+
+        private void setStreet(String street) {
+            this.street = street;
+        }
+
+        private void setCity(String city) {
+            this.city = city;
+        }
+
+        private void setState(String state) {
+            this.state = state;
+        }
+
+        private void setCountry(String country) {
+            this.country = country;
+        }
+
+        private void setZip(String zip) {
+            this.zip = zip;
+        }
+
+        private void setLatitude(double latitude) {
+            this.latitude = latitude;
+        }
+
+        private void setLongitude(double longitude) {
+            this.longitude = longitude;
+        }
     }
 
 }

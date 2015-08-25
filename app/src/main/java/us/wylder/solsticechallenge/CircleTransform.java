@@ -25,6 +25,8 @@
         import com.squareup.picasso.Transformation;
 
 /**
+ * Used to transform jpegs into circles with Picasso.
+ *
  * Created by julian on 13/6/21.
  */
 public class CircleTransform implements Transformation {

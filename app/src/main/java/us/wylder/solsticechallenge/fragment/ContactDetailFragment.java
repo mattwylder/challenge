@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -49,7 +48,7 @@ public class ContactDetailFragment extends Fragment {
     public static final String ARG_ITEM_ID = "item_id";
 
     /**
-     * The dummy content this fragment is presenting.
+     * The content this fragment is presenting.
      */
     private Contact contact;
     private Details details;
@@ -66,9 +65,6 @@ public class ContactDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         if (getArguments().containsKey(ARG_ITEM_ID)) {
-            // Load the dummy content specified by the fragment
-            // arguments. In a real-world scenario, use a Loader
-            // to load content from a content provider.
 
             contact = getArguments().getParcelable(ARG_ITEM_ID);
             if(contact != null){
@@ -82,7 +78,6 @@ public class ContactDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_contact_detail, container, false);
 
-        // Show the dummy content as text in a TextView.
         if (contact != null) {
 
             SimpleDateFormat sdf = new SimpleDateFormat("MM.dd.y");
@@ -105,8 +100,13 @@ public class ContactDetailFragment extends Fragment {
 
     private void getDetails(String url){
 
+        //FIXME: This is getting a new RequestQueue, not from a singleton.
         RequestQueue queue = Volley.newRequestQueue(getActivity().getApplicationContext());
         Log.d(TAG, "getDetails about to call volley");
+        /*
+         * FIXME: Replace JsonObjectRequest with a custom request,
+         * Converting from JSONObjects to Contacts doubles the number of objects used and wastes time
+         */
         JsonObjectRequest jsArrayRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
 
@@ -140,6 +140,7 @@ public class ContactDetailFragment extends Fragment {
                         into((ImageView) getActivity().findViewById(R.id.imageView));
                 ((TextView) getActivity().findViewById(R.id.email)).setText(details.getEmail());
                 ((TextView) getActivity().findViewById(R.id.website)).setText(details.getWebsite());
+                ((TextView) getActivity().findViewById(R.id.address)).setText(details.getAddress().toString());
             }
 
     }

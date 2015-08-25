@@ -2,7 +2,6 @@ package us.wylder.solsticechallenge.data;
 
 
 /**
- * TODO: Parcelable problems. Everyone has the same weird birthday, no one has phone numbers
  * TODO: Try to figure Jackson out. If not, do GSON, but get rid of the middleman objects you have now
  * TODO: clean try/catch and setters
  */
@@ -18,10 +17,13 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
+ *
  * Created by Matt on 8/17/2015.
  */
 public class Contact implements Parcelable{
+
     private static final String TAG = Contact.class.getSimpleName();
+
     private String name;
     private int employeeId;
     private String company;
@@ -32,6 +34,9 @@ public class Contact implements Parcelable{
     private String mobilePhone;
     private String workPhone;
 
+    /*
+     * Constructor used for debugging
+     */
     public Contact(String name, int employeeId, String company, String detailsURL,
                    String smallImageURL, String birthdate, ArrayList<String> phoneNumbers){
         Log.d(TAG, "Contact constructor");
@@ -49,6 +54,7 @@ public class Contact implements Parcelable{
         setEmployeeId(in.readInt());
         setCompany(in.readString());
         setDetailsURL(in.readString());
+        setSmallImageURL(in.readString());
         setBirthdate(in.readLong());
         setHomePhone(in.readString());
         setMobilePhone(in.readString());

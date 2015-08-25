@@ -37,6 +37,7 @@ import us.wylder.solsticechallenge.data.Contact;
  * interface.
  */
 public class ContactListFragment extends ListFragment {
+
     private static final String TAG = ContactListFragment.class.getSimpleName();
 
     private ArrayList<Contact> contacts;
@@ -67,7 +68,7 @@ public class ContactListFragment extends ListFragment {
         /**
          * Callback for when an item has been selected.
          */
-        public void onItemSelected(Contact item);
+         void onItemSelected(Contact item);
     }
 
     /**
@@ -97,38 +98,6 @@ public class ContactListFragment extends ListFragment {
         dialog.setInverseBackgroundForced(false);
         dialog.show();
         getContacts();
-
-//        ArrayList<String> numbers1 = new ArrayList();
-//        numbers1.add("602-252-4827");
-//        numbers1.add("602-252-4009");
-//        numbers1.add("650-252-4010");
-//
-//        ArrayList<String> numbers2 = new ArrayList();
-//        numbers2.add("907-345-0962");
-//        numbers2.add("907-345-1215");
-//        numbers2.add("650-345-1220");
-//
-//        contacts = new ArrayList();
-//        contacts.add(new Contact(
-//                "Essie Vaill",
-//                1,
-//                "Litronic Industries",
-//                "https://solstice.applauncher.com/external/Contacts/id/1.json",
-//                "https://solstice.applauncher.com/external/Contacts/images/image1_small.jpeg",
-//                "1382659557",
-//                numbers1));
-//        contacts.add(new Contact(
-//                "Cruz Roudabush",
-//                2,
-//                "Meridian Products",
-//                "https://solstice.applauncher.com/external/Contacts/id/2.json",
-//                "https://solstice.applauncher.com/external/Contacts/images/image2_small.jpeg",
-//                "558289857",
-//                numbers2));
-//
-//        setListAdapter(new ContactArrayAdapter(
-//                getActivity(),
-//                contacts));
 
     }
 
@@ -204,15 +173,20 @@ public class ContactListFragment extends ListFragment {
     }
 
     private void getContacts(){
+
+        //FIXME: This is getting a new RequestQueue, not from a singleton.
         RequestQueue queue = Volley.newRequestQueue(getActivity().getApplicationContext());
         String url = getString(R.string.contacts_url);
 
+        /*
+         * FIXME: Replace JsonArrayRequest with a custom request that uses Jackson or GSON to convert directly to Contact
+         */
         JsonArrayRequest jsArrayRequest = new JsonArrayRequest
                 (url, new Response.Listener<JSONArray>() {
 
                     @Override
                     public void onResponse(JSONArray response) {
-                        contacts = new ArrayList<Contact>();
+                        contacts = new ArrayList();
 
                         try {
 

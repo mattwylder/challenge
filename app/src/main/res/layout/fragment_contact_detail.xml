@@ -1,7 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:id="@+id/contact_detail"
     style="?android:attr/textAppearanceLarge" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:padding="16dp" android:textIsSelectable="true"
+    android:layout_height="match_parent"
+    android:textIsSelectable="true"
     android:orientation="vertical" tools:context=".ContactDetailFragment" >
 
     <LinearLayout
@@ -9,7 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/header"
-        android:paddingBottom="20dp">
+        android:paddingBottom="10dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingRight="16dp">
 
         <ImageView
             android:layout_width="150dp"
@@ -41,7 +45,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="@string/filler_name"
                     android:id="@+id/name" />
             </LinearLayout>
 
@@ -62,7 +65,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="@string/filler_company"
                     android:id="@+id/company" />
             </LinearLayout>
         </LinearLayout>
@@ -72,7 +74,8 @@
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/scrollView" >
+        android:id="@+id/scrollView"
+        android:padding="16dp">
 
         <LinearLayout
             android:orientation="vertical"
@@ -86,7 +89,7 @@
                 android:layout_height="match_parent"
                 android:id="@+id/layout_phone"
                 android:paddingTop="20dp"
-                android:paddingBottom="40dp">
+                android:paddingBottom="30dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -95,26 +98,62 @@
                     android:text="@string/label_phone"
                     android:id="@+id/label_phone" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/filler_phone"
-                    android:id="@+id/phone_home" />
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Medium Text"
-                    android:id="@+id/phone_mobile" />
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/type_home"
+                        android:id="@+id/label_home" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Medium Text"
-                    android:id="@+id/phone_work" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:id="@+id/phone_home" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/type_mobile"
+                        android:id="@+id/label_mobile" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:id="@+id/phone_mobile" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/type_Work"
+                        android:id="@+id/label_work" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:id="@+id/phone_work" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -123,7 +162,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/layout_address"
-                android:paddingBottom="40dp">
+                android:paddingBottom="30dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -136,7 +175,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/filler_address"
                     android:id="@+id/address" />
             </LinearLayout>
 
@@ -145,7 +183,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/layout_birthdate"
-                android:paddingBottom="40dp">
+                android:paddingBottom="30dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -158,7 +196,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/filler_birthdate"
                     android:id="@+id/birthdate" />
             </LinearLayout>
 
@@ -167,7 +204,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/layout_email"
-                android:paddingBottom="40dp">
+                android:paddingBottom="30dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -180,7 +217,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/filler_email"
                     android:id="@+id/email" />
             </LinearLayout>
 
@@ -189,7 +225,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/layout_website"
-                android:paddingBottom="40dp" >
+                android:paddingBottom="30dp" >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -202,7 +238,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/filler_website"
                     android:id="@+id/website" />
             </LinearLayout>
         </LinearLayout>

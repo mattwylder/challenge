@@ -15,11 +15,4 @@
     <string name="label_address">Address:</string>
     <string name="label_website">Website:</string>
 
-    <string name="filler_name">Jenny</string>
-    <string name="filler_company">Tutone, Inc.</string>
-    <string name="filler_phone">(555)867-5309</string>
-    <string name="filler_birthdate">January 1, 1999</string>
-    <string name="filler_email">jane@doe.co</string>
-    <string name="filler_address">123 Fake St.Chicago, IL 60618</string>
-    <string name="filler_website">imgonnamakeyoumine.com</string>
 </resources>
